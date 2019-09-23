@@ -36,12 +36,20 @@ namespace lecture
 				{
 					mStates.pop();
 				}
+				else
+				{
+					mStates.top()->Pause();
+				}
 			}
+
+			mStates.push(std::move(mNewState));
+			mStates.top()->Init();
+			mIsAdding = false;
 		}
 	}
 
 	StateRef& StateMachine::GetActiveState()
 	{
-		// TODO: insert return statement here
+		return mStates.top();
 	}
 }
