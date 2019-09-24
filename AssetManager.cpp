@@ -11,10 +11,12 @@ namespace lecture
 			mTextures[name] = tex;
 		}
 	}
+
 	sf::Texture& AssetManager::GetTexture(std::string name)
 	{
 		return mTextures.at(name);
 	}
+
 	void AssetManager::LoadFont(std::string name, std::string fileName)
 	{
 		sf::Font font;
@@ -24,6 +26,7 @@ namespace lecture
 			mFonts[name] = font;
 		}
 	}
+	
 	sf::Font & AssetManager::GetFont(std::string name)
 	{
 		return mFonts.at(name);
