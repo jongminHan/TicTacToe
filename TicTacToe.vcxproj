@@ -136,6 +136,31 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\fonts\arial.ttf" />
+    <Font Include="Resources\fonts\Marker Felt.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\res\Achievements.png" />
+    <Image Include="Resources\res\Game Title.png" />
+    <Image Include="Resources\res\Grid.png" />
+    <Image Include="Resources\res\Home Button.png" />
+    <Image Include="Resources\res\Main Menu Background.png" />
+    <Image Include="Resources\res\O Win.png" />
+    <Image Include="Resources\res\O.png" />
+    <Image Include="Resources\res\Pause Background.png" />
+    <Image Include="Resources\res\Pause Button.png" />
+    <Image Include="Resources\res\Pause Window.png" />
+    <Image Include="Resources\res\Play Button Outer.png" />
+    <Image Include="Resources\res\Play Button.png" />
+    <Image Include="Resources\res\Resume Button.png" />
+    <Image Include="Resources\res\Retry Button.png" />
+    <Image Include="Resources\res\Sound Off.png" />
+    <Image Include="Resources\res\Sound On.png" />
+    <Image Include="Resources\res\Splash Background.png" />
+    <Image Include="Resources\res\X Win.png" />
+    <Image Include="Resources\res\X.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

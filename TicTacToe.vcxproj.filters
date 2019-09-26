@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\fonts">
+      <UniqueIdentifier>{ccb7e169-9ae4-4b08-8697-2755206bf47d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\res">
+      <UniqueIdentifier>{549a0e72-bcc6-46cd-b7c8-b1c70b22ce7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="State.h">
@@ -47,5 +53,72 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\fonts\arial.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="Resources\fonts\Marker Felt.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\res\Achievements.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Game Title.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Grid.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Home Button.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Main Menu Background.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\O Win.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\O.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Pause Background.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Pause Button.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Pause Window.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Play Button Outer.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Play Button.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Resume Button.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Retry Button.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Sound Off.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Sound On.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\Splash Background.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\X Win.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
+    <Image Include="Resources\res\X.png">
+      <Filter>Resource Files\res</Filter>
+    </Image>
   </ItemGroup>
 </Project>
