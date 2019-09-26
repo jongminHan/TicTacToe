@@ -5,7 +5,7 @@ namespace lecture
 {
 	Game::Game(int width, int height, std::string title)
 	{
-		mData->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::TitleBar);
+		mData->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
 
 		Run();
 	}
