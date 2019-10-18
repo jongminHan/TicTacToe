@@ -128,7 +128,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="SplashState.h" />
-    <ClInclude Include="State.h" />
+    <ClInclude Include="IState.h" />
     <ClInclude Include="StateMachine.h" />
   </ItemGroup>
   <ItemGroup>

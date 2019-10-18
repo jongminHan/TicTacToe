@@ -27,7 +27,7 @@ namespace lecture
 		}
 	}
 	
-	sf::Font & AssetManager::GetFont(std::string name)
+	sf::Font& AssetManager::GetFont(std::string name)
 	{
 		return mFonts.at(name);
 	}

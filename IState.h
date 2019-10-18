@@ -2,7 +2,7 @@
 
 namespace lecture
 {
-	class State
+	class IState
 	{
 	public:
 		virtual void Init() = 0;
@@ -10,7 +10,7 @@ namespace lecture
 		virtual void Update(float dt) = 0;
 		virtual void Draw(float dt) = 0;
 
-		virtual void Resume() {}
-		virtual void Pause() {}
+		virtual void Resume() = 0;
+		virtual void Pause() = 0;
 	};
 }
