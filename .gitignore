@@ -38,3 +38,5 @@
 *.log
 *.ilk
 *.ipch
+
+/.vs/*
