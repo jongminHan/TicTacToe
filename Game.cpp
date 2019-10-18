@@ -1,12 +1,12 @@
 #include "Game.h"
-
+#include "SplashState.h"
 
 namespace lecture
 {
 	Game::Game(int width, int height, std::string title)
 	{
 		mData->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
-
+		mData->machine.AddState(StateRef(new SplashState(mData)));
 		Run();
 	}
 

@@ -2,11 +2,11 @@
 #include <memory>
 #include <stack>
 
-#include "State.h"
+#include "IState.h"
 
 namespace lecture
 {
-	typedef std::unique_ptr<State> StateRef;
+	typedef std::unique_ptr<IState> StateRef;
 
 	class StateMachine
 	{

@@ -1,8 +1,9 @@
 #include <iostream>
 #include "Game.h"
+#include "DEFINITIONS.h"
 
 int main()
 {
-	lecture::Game(800, 600, "SFML Starter");
+	lecture::Game(SCRREN_WIDTH , SCREEN_HEIGHT, "Tic-Tac-Toe");
 	return EXIT_SUCCESS;
 }
