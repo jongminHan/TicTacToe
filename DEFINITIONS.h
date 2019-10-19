@@ -1,11 +1,8 @@
 #pragma once
 
-#define SCRREN_WIDTH 768
-#define SCREEN_HEIGHT 1136
+const int SCRREN_WIDTH = 768;
+const int SCREEN_HEIGHT = 1136;
 
-#define SPLASH_STATE_SHOW_TIME 3
+const float SPLASH_STATE_SHOW_TIME = 3.f;
 
-#define SPLASH_SCENE_BACKGROUND_FILEPATH "Resource Files/res/Splash Background.png"
-
-
-
+static const char* SPLASH_SCENE_BACKGROUND_FILEPATH = "Resources\\res\\Splash Background.png";

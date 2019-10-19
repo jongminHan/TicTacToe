@@ -1,12 +1,14 @@
 #include "AssetManager.h"
+#include <cassert>
 
 namespace lecture
 {
 	void AssetManager::LoadTexture(std::string name, std::string fileName)
 	{
 		sf::Texture tex;
-
-		if (tex.loadFromFile(fileName))
+		bool bIsLoaded = tex.loadFromFile(fileName);
+		assert(("Texture isn't loaded.", bIsLoaded));
+		if (bIsLoaded)
 		{
 			mTextures[name] = tex;
 		}

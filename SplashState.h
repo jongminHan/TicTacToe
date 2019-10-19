@@ -1,7 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include "DEFINITIONS.h"
-#include "IState.h"
 #include "Game.h"
 
 namespace lecture

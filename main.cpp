@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Game.h"
-#include "DEFINITIONS.h"
 
 int main()
 {

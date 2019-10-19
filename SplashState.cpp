@@ -32,8 +32,7 @@ namespace lecture
 	{
 		if (mClock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
 		{
-			// Switch to the main menu
-			std::cout << "Go to Main Menu" << std::endl;
+			std::cout << dt << std::endl;
 		}
 	}
 

@@ -1,4 +1,5 @@
 #pragma once 
+#include "DEFINITIONS.h"
 
 namespace lecture
 {
