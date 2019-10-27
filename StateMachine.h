@@ -25,8 +25,8 @@ namespace lecture
 		std::stack<StateRef> mStates;
 		StateRef mNewState;
 
-		bool mIsRemoving;
-		bool mIsAdding;
-		bool mIsReplacing;
+		bool mbIsRemoving;
+		bool mbIsAdding;
+		bool mbIsReplacing;
 	};
 }

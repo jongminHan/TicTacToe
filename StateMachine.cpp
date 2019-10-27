@@ -4,19 +4,19 @@ namespace lecture
 {
 	void StateMachine::AddState(StateRef newState, bool isReplacing)
 	{
-		mIsAdding = true;
-		mIsReplacing = isReplacing;
+		mbIsAdding = true;
+		mbIsReplacing = isReplacing;
 		mNewState = std::move(newState);
 	}
 
 	void StateMachine::RemoveState()
 	{
-		mIsRemoving = true;
+		mbIsRemoving = true;
 	}
 
 	void StateMachine::ProcessStateChanges()
 	{
-		if (mIsRemoving && !mStates.empty())
+		if (mbIsRemoving && !mStates.empty())
 		{
 			mStates.pop();
 
@@ -25,14 +25,14 @@ namespace lecture
 				mStates.top()->Resume();
 			}
 
-			mIsRemoving = false;
+			mbIsRemoving = false;
 		}
 
-		if (mIsAdding)
+		if (mbIsAdding)
 		{
 			if (!mStates.empty())
 			{
-				if (mIsReplacing)
+				if (mbIsReplacing)
 				{
 					mStates.pop();
 				}
@@ -44,7 +44,7 @@ namespace lecture
 
 			mStates.push(std::move(mNewState));
 			mStates.top()->Init();
-			mIsAdding = false;
+			mbIsAdding = false;
 		}
 	}
 
