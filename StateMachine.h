@@ -6,24 +6,24 @@
 
 namespace lecture
 {
-	typedef std::unique_ptr<IState> StateRef;
+	typedef std::unique_ptr<IState> IStateRef;
 
 	class StateMachine
 	{
 	public:
-		StateMachine() = default;
+		StateMachine();
 		virtual ~StateMachine() = default;
 
-		void AddState(StateRef newState, bool isReplacing = true);
+		void AddState(IStateRef newState, bool isReplacing = true);
 		void RemoveState();
 
 		void ProcessStateChanges();
 
-		StateRef& GetActiveState();
+		IStateRef& GetActiveState();
 
 	private:
-		std::stack<StateRef> mStates;
-		StateRef mNewState;
+		std::stack<IStateRef> mStates;
+		IStateRef mNewState;
 
 		bool mbIsRemoving;
 		bool mbIsAdding;

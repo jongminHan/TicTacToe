@@ -1,5 +1,6 @@
 #pragma once
 #include "Game.h"
+#include "MainMenuState.h"
 
 namespace lecture
 {

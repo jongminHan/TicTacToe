@@ -2,7 +2,14 @@
 
 namespace lecture
 {
-	void StateMachine::AddState(StateRef newState, bool isReplacing)
+	StateMachine::StateMachine()
+		: mbIsRemoving(false)
+		, mbIsAdding(false)
+		, mbIsReplacing(false)
+	{
+	}
+
+	void StateMachine::AddState(IStateRef newState, bool isReplacing)
 	{
 		mbIsAdding = true;
 		mbIsReplacing = isReplacing;
@@ -48,7 +55,7 @@ namespace lecture
 		}
 	}
 
-	StateRef& StateMachine::GetActiveState()
+	IStateRef& StateMachine::GetActiveState()
 	{
 		return mStates.top();
 	}

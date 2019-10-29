@@ -1,7 +1,6 @@
 #include <sstream>
 #include <iostream>
 #include "SplashState.h"
-#include "MainMenuState.h"
 
 namespace lecture
 {
@@ -34,7 +33,7 @@ namespace lecture
 		if (mClock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
 		{
 			// Switch to the Main Menu
-			mData->machine.AddState(StateRef(new MainMenuState(mData)), true);
+			mData->machine.AddState(IStateRef(new MainMenuState(mData)), true);
 		}
 	}
 
