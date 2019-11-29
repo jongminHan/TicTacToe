@@ -1,6 +1,7 @@
 #include <sstream>
 #include <iostream>
 #include "SplashState.h"
+#include "MainMenuState.h"
 
 namespace lecture
 {
