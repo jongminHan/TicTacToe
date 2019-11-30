@@ -40,3 +40,5 @@
 *.ipch
 
 /.vs/*
+Debug/TicTacToe.vcxproj.FileListAbsolute.txt
+x64/Debug/TicTacToe.vcxproj.FileListAbsolute.txt

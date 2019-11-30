@@ -1,14 +1,15 @@
-#include "MainMenuState.h"
+#include "PauseState.h"
 #include "GameState.h"
+#include "MainMenuState.h"
 
 namespace lecture
 {
-	MainMenuState::MainMenuState(GameDataRef data)
+	PauseState::PauseState(GameDataRef data)
 		: mData(data)
 	{
 	}
 
-	void MainMenuState::Init()
+	void PauseState::Init()
 	{
 		mData->assets.LoadTexture("Background", MAIN_MENU_BACKGROUND_FILEPATH);
 		mData->assets.LoadTexture("Play Button", MAIN_MENU_PLAY_BUTTON);
@@ -25,7 +26,7 @@ namespace lecture
 		mTitle.setPosition((SCRREN_WIDTH / 2) - (mTitle.getGlobalBounds().width / 2), mTitle.getGlobalBounds().height * 0.1);
 	}
 
-	void MainMenuState::HandleInput()
+	void PauseState::HandleInput()
 	{
 		sf::Event event;
 
@@ -43,12 +44,12 @@ namespace lecture
 		}
 	}
 
-	void MainMenuState::Update(float dt)
+	void PauseState::Update(float dt)
 	{
 		// empty on purpose
 	}
 
-	void MainMenuState::Draw(float dt)
+	void PauseState::Draw(float dt)
 	{
 		mData->window.clear();
 
