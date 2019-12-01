@@ -65,6 +65,7 @@ namespace lecture
 		{
 			for (int y = 0; y < 3; y++)
 			{
+				mData->window.draw(mGridPieces[x][y]);
 			}
 		}
 
@@ -81,7 +82,7 @@ namespace lecture
 			{
 				mGridPieces[x][y].setTexture(mData->assets.GetTexture("X Piece"));
 				mGridPieces[x][y].setPosition(mGridSprite.getPosition().x + x * tempSpriteSize.x - 7, mGridSprite.getPosition().y + y * tempSpriteSize.y - 7);
-				mGridPieces[x][y].setColor(sf::Color(255, 255, 255, 255));
+				mGridPieces[x][y].setColor(sf::Color(255, 255, 255, 0));
 			}
 		}
 	}

@@ -7,7 +7,6 @@ namespace lecture
 	{
 		mData->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
 		mData->machine.AddState(IStateRef(new SplashState(mData)));
-		Run();
 	}
 
 	void Game::Run()
