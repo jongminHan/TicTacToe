@@ -17,10 +17,15 @@ namespace lecture
 		void Update(float dt);
 		void Draw(float dt);
 	private:
+		void initGridPieces();
+
 		GameDataRef mData;
 		sf::Sprite mBackground;
 		sf::Sprite mPauseButton;
-		
+		sf::Sprite mGridSprite;
+		sf::Sprite mGridPieces[3][3];
+
+		int mGridArray[3][3];
 		int mTurn;
 		int mGameState;
 	};

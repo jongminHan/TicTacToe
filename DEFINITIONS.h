@@ -29,14 +29,12 @@ static const char* X_WINNING_PIECE_FILEPATH = "Resources\\res\\X Win.png";
 
 static const char* O_WINNING_PIECE_FILEPATH = "Resources\\res\\O Win.png";
 
+static const char* GRID_SPRITE_FILEPATH = "Resources\\res\\Grid.png";
+
 const int X_PIECE = 8;
-
 const int O_PIECE = 0;
-
 const int EMPTY_PIECE = -1;
-
 const int PLAYER_PIECE = X_PIECE;
-
 const int AI_PIECE = O_PIECE;
 
 const int STATE_PLAYING = 98;
