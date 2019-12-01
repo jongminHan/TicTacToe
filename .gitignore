@@ -40,5 +40,10 @@
 *.ipch
 
 /.vs/*
+<<<<<<< HEAD
 Debug/TicTacToe.vcxproj.FileListAbsolute.txt
 x64/Debug/TicTacToe.vcxproj.FileListAbsolute.txt
+=======
+x64/Debug/TicTacToe.vcxproj.FileListAbsolute.txt
+Debug/TicTacToe.vcxproj.FileListAbsolute.txt
+>>>>>>> master
