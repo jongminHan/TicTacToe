@@ -1,17 +1,18 @@
 #include "GameState.h"
+#include "PauseState.h"
+#include "GameOverState.h"
 
 namespace lecture
 {
 	GameState::GameState(GameDataRef data)
 		: mData(data)
+		, mGameState(STATE_PLAYING)
+		, mTurn(PLAYER_PIECE)
 	{
 	}
 
 	void GameState::Init()
 	{
-		mGameState = STATE_PLAYING;
-		mTurn = PLAYER_PIECE;
-
 		mData->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
 
 		mBackground.setTexture(mData->assets.GetTexture("Background"));
@@ -33,7 +34,8 @@ namespace lecture
 
 			if (mData->input.IsSpriteClicked(mPauseButton, sf::Mouse::Left, mData->window))
 			{
-				std::cout << "Pause the Game" << std::endl;
+				//mData->machine.AddState(IStateRef(new PauseState(mData)), false);
+				mData->machine.AddState(IStateRef(new GameOverState(mData)), true);
 			}
 		}
 	}

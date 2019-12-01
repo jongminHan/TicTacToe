@@ -1,5 +1,4 @@
 #include "PauseState.h"
-#include "GameState.h"
 #include "MainMenuState.h"
 
 namespace lecture
@@ -11,19 +10,18 @@ namespace lecture
 
 	void PauseState::Init()
 	{
-		mData->assets.LoadTexture("Background", MAIN_MENU_BACKGROUND_FILEPATH);
-		mData->assets.LoadTexture("Play Button", MAIN_MENU_PLAY_BUTTON);
-		mData->assets.LoadTexture("Play Button Outer", MAIN_MENU_PLAY_BUTTON_OUTER);
-		mData->assets.LoadTexture("Game Title", MAIN_MENU_TITLE_PATH);
+		mData->assets.LoadTexture("Pause Background", PAUSE_BACKGROUND_FILEPATH);
+		mData->assets.LoadTexture("Resume Button", RESUME_BUTTON);
+		mData->assets.LoadTexture("Home Button", HOME_BUTTON);
 
-		mBackground.setTexture(mData->assets.GetTexture("Background"));
-		mPlayButton.setTexture(mData->assets.GetTexture("Play Button"));
-		mPlayButtonOuter.setTexture(mData->assets.GetTexture("Play Button Outer"));
-		mTitle.setTexture(mData->assets.GetTexture("Game Title"));
+		mBackground.setTexture(mData->assets.GetTexture("Pause Background"));
+		mResumeButton.setTexture(mData->assets.GetTexture("Resume Button"));
+		mHomeButton.setTexture(mData->assets.GetTexture("Home Button"));
 
-		mPlayButton.setPosition((SCRREN_WIDTH / 2) - (mPlayButton.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (mPlayButton.getGlobalBounds().height / 2));
-		mPlayButtonOuter.setPosition((SCRREN_WIDTH / 2) - (mPlayButtonOuter.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (mPlayButtonOuter.getGlobalBounds().height / 2));
-		mTitle.setPosition((SCRREN_WIDTH / 2) - (mTitle.getGlobalBounds().width / 2), mTitle.getGlobalBounds().height * 0.1);
+		mResumeButton.setPosition(mData->window.getSize().x / 2 - mResumeButton.getLocalBounds().width / 2, 
+			mData->window.getSize().y / 3 - mResumeButton.getLocalBounds().height / 2);
+		mHomeButton.setPosition(mData->window.getSize().x / 2 - mHomeButton.getLocalBounds().width / 2,
+			(mData->window.getSize().y / 3) * 2 - mHomeButton.getLocalBounds().height / 2);
 	}
 
 	void PauseState::HandleInput()
@@ -37,9 +35,15 @@ namespace lecture
 				mData->window.close();
 			}
 
-			if (mData->input.IsSpriteClicked(mPlayButton, sf::Mouse::Left, mData->window))
+			if (mData->input.IsSpriteClicked(mResumeButton, sf::Mouse::Left, mData->window))
 			{
-				mData->machine.AddState(IStateRef(new GameState(mData)), true);
+				mData->machine.RemoveState();
+			}
+
+			if (mData->input.IsSpriteClicked(mHomeButton, sf::Mouse::Left, mData->window))
+			{
+				mData->machine.RemoveState();
+				mData->machine.AddState(IStateRef(new MainMenuState(mData)), true);
 			}
 		}
 	}
@@ -54,9 +58,8 @@ namespace lecture
 		mData->window.clear();
 
 		mData->window.draw(mBackground);
-		mData->window.draw(mPlayButton);
-		mData->window.draw(mPlayButtonOuter);
-		mData->window.draw(mTitle);
+		mData->window.draw(mResumeButton);
+		mData->window.draw(mHomeButton);
 
 		mData->window.display();
 	}

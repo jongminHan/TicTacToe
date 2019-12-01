@@ -15,6 +15,7 @@ static const char* MAIN_MENU_TITLE_PATH = "Resources\\res\\Game Title.png";
 static const char* MAIN_MENU_PLAY_BUTTON = "Resources\\res\\Play Button.png";
 static const char* RESUME_BUTTON = "Resources\\res\\Resume Button.png";
 static const char* HOME_BUTTON = "Resources\\res\\Home Button.png";
+static const char* RETRY_BUTTON = "Resources\\res\\Retry Button.png";
 
 static const char* MAIN_MENU_PLAY_BUTTON_OUTER = "Resources\\res\\Play Button Outer.png";
 
