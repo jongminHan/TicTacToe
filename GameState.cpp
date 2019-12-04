@@ -24,6 +24,8 @@ namespace lecture
 		mData->assets.LoadTexture("Grid Sprite", GRID_SPRITE_FILEPATH);
 		mData->assets.LoadTexture("X Piece", X_PIECE_FILEPATH);
 		mData->assets.LoadTexture("O Piece", O_PIECE_FILEPATH);
+		mData->assets.LoadTexture("X Winning Piece", X_WINNING_PIECE_FILEPATH);
+		mData->assets.LoadTexture("O Winning Piece", O_WINNING_PIECE_FILEPATH);
 
 		mBackground.setTexture(mData->assets.GetTexture("Background"));
 		mPauseButton.setTexture(mData->assets.GetTexture("Pause Button"));
@@ -53,7 +55,10 @@ namespace lecture
 			}
 			else if (mData->input.IsSpriteClicked(mGridSprite, sf::Mouse::Left, mData->window))
 			{
-				checkAndPlacePiece();
+				if (mGameState == STATE_PLAYING)
+				{
+					checkAndPlacePiece();
+				}
 			}
 		}
 	}
@@ -141,15 +146,54 @@ namespace lecture
 			if (mTurn == PLAYER_PIECE)
 			{
 				mGridPieces[column - 1][row - 1].setTexture(mData->assets.GetTexture("X Piece"));
+				checkPlayerHasWon(mTurn);
 				mTurn = AI_PIECE;
 			}
 			else if (mTurn == AI_PIECE)
 			{
 				mGridPieces[column - 1][row - 1].setTexture(mData->assets.GetTexture("O Piece"));
+				checkPlayerHasWon(mTurn);
 				mTurn = PLAYER_PIECE;
 			}
 
 			mGridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
+		}
+	}
+
+	void GameState::checkPlayerHasWon(int player)
+	{
+		checkThreePiecesForMatch(0, 0, 1, 0, 2, 0, player);
+		checkThreePiecesForMatch(0, 1, 1, 1, 2, 1, player);
+		checkThreePiecesForMatch(0, 2, 1, 2, 2, 2, player);
+		checkThreePiecesForMatch(0, 0, 0, 1, 0, 2, player);
+
+		checkThreePiecesForMatch(1, 0, 1, 1, 1, 2, player);
+		checkThreePiecesForMatch(2, 0, 2, 1, 2, 2, player);
+		checkThreePiecesForMatch(0, 0, 1, 1, 2, 2, player);
+		checkThreePiecesForMatch(0, 2, 1, 1, 2, 0, player);
+
+		int emptyNum = 9;
+
+		for (int x = 0; x < 3; x++)
+		{
+			for (int y = 0; y < 3; y++)
+			{
+				if (mGridArray[x][y] != EMPTY_PIECE)
+				{
+					emptyNum--;
+				}
+			}
+		}
+
+		if (emptyNum == 0 && (mGameState != STATE_WON) && (mGameState != STATE_LOSE))
+		{
+			mGameState = STATE_DRAW;
+		}
+
+		if (mGameState == STATE_DRAW || mGameState == STATE_LOSE || mGameState == STATE_WON)
+		{
+
+
 		}
 	}
 }

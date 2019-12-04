@@ -18,8 +18,9 @@ namespace lecture
 		void Draw(float dt);
 	private:
 		void initGridPieces();
-
 		void checkAndPlacePiece();
+		void checkPlayerHasWon(int turn);
+		void checkThreePiecesForMatch(int x1, int y1, int x2, int y2, int x3, int y3, int pieceToCheck);
 
 		GameDataRef mData;
 		sf::Sprite mBackground;
