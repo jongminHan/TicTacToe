@@ -8,8 +8,14 @@ namespace lecture
 		: mData(data)
 		, mGameState(STATE_PLAYING)
 		, mTurn(PLAYER_PIECE)
-		, mGridArray{ EMPTY_PIECE }
 	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				mGridArray[i][j] = EMPTY_PIECE;
+			}
+		}
 	}
 
 	void GameState::Init()
@@ -44,6 +50,10 @@ namespace lecture
 			if (mData->input.IsSpriteClicked(mPauseButton, sf::Mouse::Left, mData->window))
 			{
 				mData->machine.AddState(IStateRef(new PauseState(mData)), false);
+			}
+			else if (mData->input.IsSpriteClicked(mGridSprite, sf::Mouse::Left, mData->window))
+			{
+				checkAndPlacePiece();
 			}
 		}
 	}
@@ -84,6 +94,62 @@ namespace lecture
 				mGridPieces[x][y].setPosition(mGridSprite.getPosition().x + x * tempSpriteSize.x - 7, mGridSprite.getPosition().y + y * tempSpriteSize.y - 7);
 				mGridPieces[x][y].setColor(sf::Color(255, 255, 255, 0));
 			}
+		}
+	}
+
+	void GameState::checkAndPlacePiece()
+	{
+		sf::Vector2i touchPoint = mData->input.GetMousePosition(mData->window);
+		sf::FloatRect gridSize = mGridSprite.getGlobalBounds();
+		sf::Vector2f gapOutsideOfGrid = sf::Vector2f((SCRREN_WIDTH - gridSize.width) / 2, (SCREEN_HEIGHT - gridSize.height) / 2);
+		sf::Vector2f gridLocalTouchPos = sf::Vector2f(touchPoint.x - gapOutsideOfGrid.x, touchPoint.y - gapOutsideOfGrid.y);
+		sf::Vector2f gridSectionSize = sf::Vector2f(gridSize.width / 3, gridSize.height / 3);
+
+		int column = 1;
+		int row = 1;
+
+		if (gridLocalTouchPos.x < gridSectionSize.x)
+		{
+			column = 1;
+		}
+		else if (gridLocalTouchPos.x < 2 * gridSectionSize.x)
+		{
+			column = 2;
+		}
+		else if (gridLocalTouchPos.x < gridSize.width)
+		{
+			column = 3;
+		}
+
+		if (gridLocalTouchPos.y < gridSectionSize.y)
+		{
+			row = 1;
+		}
+		else if (gridLocalTouchPos.y < 2 * gridSectionSize.y)
+		{
+			row = 2;
+		}
+		else if (gridLocalTouchPos.y < gridSize.height)
+		{
+			row = 3;
+		}
+
+		if (mGridArray[column - 1][row - 1] == EMPTY_PIECE)
+		{
+			mGridArray[column - 1][row - 1] = mTurn;
+
+			if (mTurn == PLAYER_PIECE)
+			{
+				mGridPieces[column - 1][row - 1].setTexture(mData->assets.GetTexture("X Piece"));
+				mTurn = AI_PIECE;
+			}
+			else if (mTurn == AI_PIECE)
+			{
+				mGridPieces[column - 1][row - 1].setTexture(mData->assets.GetTexture("O Piece"));
+				mTurn = PLAYER_PIECE;
+			}
+
+			mGridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
 		}
 	}
 }

@@ -19,6 +19,8 @@ namespace lecture
 	private:
 		void initGridPieces();
 
+		void checkAndPlacePiece();
+
 		GameDataRef mData;
 		sf::Sprite mBackground;
 		sf::Sprite mPauseButton;
