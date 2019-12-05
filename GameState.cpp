@@ -192,8 +192,39 @@ namespace lecture
 
 		if (mGameState == STATE_DRAW || mGameState == STATE_LOSE || mGameState == STATE_WON)
 		{
+			// show game over
+		}
 
+		std::cout << mGameState << std::endl;
+	}
 
+	void GameState::checkThreePiecesForMatch(int x1, int y1, int x2, int y2, int x3, int y3, int pieceToCheck)
+	{
+		if (pieceToCheck == mGridArray[x1][y1] && pieceToCheck == mGridArray[x2][y2] && pieceToCheck == mGridArray[x3][y3])
+		{
+			std::string winningPieceStr;
+
+			if (pieceToCheck == O_PIECE)
+			{
+				winningPieceStr = "O Winning Piece";
+			}
+			else
+			{
+				winningPieceStr = "X Winning Piece";
+			}
+
+			mGridPieces[x1][y1].setTexture(mData->assets.GetTexture(winningPieceStr));
+			mGridPieces[x2][y2].setTexture(mData->assets.GetTexture(winningPieceStr));
+			mGridPieces[x3][y3].setTexture(mData->assets.GetTexture(winningPieceStr));
+
+			if (pieceToCheck == PLAYER_PIECE)
+			{
+				mGameState = STATE_WON;
+			}
+			else
+			{
+				mGameState = STATE_LOSE;
+			}
 		}
 	}
 }
