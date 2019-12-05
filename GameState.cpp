@@ -1,7 +1,6 @@
 #include "GameState.h"
 #include "PauseState.h"
 #include "GameOverState.h"
-#include <cassert>
 
 namespace lecture
 {
@@ -111,8 +110,8 @@ namespace lecture
 		sf::Vector2f gridLocalTouchPos = sf::Vector2f(touchPoint.x - gapOutsideOfGrid.x, touchPoint.y - gapOutsideOfGrid.y);
 		sf::Vector2f gridSectionSize = sf::Vector2f(gridSize.width / 3, gridSize.height / 3);
 
-		int column = 0;
-		int row = 0;
+		int column = 1;
+		int row = 1;
 
 		if (gridLocalTouchPos.x < gridSectionSize.x)
 		{
@@ -140,8 +139,6 @@ namespace lecture
 			row = 3;
 		}
 
-		assert(column != 0 && row != 0);
-
 		if (mGridArray[column - 1][row - 1] == EMPTY_PIECE)
 		{
 			mGridArray[column - 1][row - 1] = mTurn;
@@ -165,7 +162,6 @@ namespace lecture
 
 	void GameState::checkPlayerHasWon(int player)
 	{
-		/*
 		checkThreePiecesForMatch(0, 0, 1, 0, 2, 0, player);
 		checkThreePiecesForMatch(0, 1, 1, 1, 2, 1, player);
 		checkThreePiecesForMatch(0, 2, 1, 2, 2, 2, player);
@@ -199,6 +195,5 @@ namespace lecture
 
 
 		}
-		*/
 	}
 }
