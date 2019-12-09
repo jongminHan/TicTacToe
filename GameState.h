@@ -4,6 +4,7 @@
 #include <iostream>
 #include "IState.h"
 #include "Game.h"
+#include "AI.h"
 
 namespace lecture
 {
@@ -31,5 +32,8 @@ namespace lecture
 		int mGridArray[3][3];
 		int mTurn;
 		int mGameState;
+		AI* mAI;
+
+		sf::Clock mClock;
 	};
 }

@@ -20,6 +20,7 @@ namespace lecture
 
 	void GameState::Init()
 	{
+		mAI = new AI(mTurn, mData);
 		mData->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
 		mData->assets.LoadTexture("Grid Sprite", GRID_SPRITE_FILEPATH);
 		mData->assets.LoadTexture("X Piece", X_PIECE_FILEPATH);
@@ -65,7 +66,13 @@ namespace lecture
 
 	void GameState::Update(float dt)
 	{
-		// empty on purpose
+		if (mGameState == STATE_DRAW || mGameState == STATE_LOSE || mGameState == STATE_WON)
+		{
+			if (mClock.getElapsedTime().asSeconds() > TIME_BEFORE_SHOWING_GAME_OVER)
+			{
+				mData->machine.AddState(IStateRef(new GameOverState(mData)), true);
+			}
+		}
 	}
 
 	void GameState::Draw(float dt)
@@ -147,13 +154,7 @@ namespace lecture
 			{
 				mGridPieces[column - 1][row - 1].setTexture(mData->assets.GetTexture("X Piece"));
 				checkPlayerHasWon(mTurn);
-				mTurn = AI_PIECE;
-			}
-			else if (mTurn == AI_PIECE)
-			{
-				mGridPieces[column - 1][row - 1].setTexture(mData->assets.GetTexture("O Piece"));
-				checkPlayerHasWon(mTurn);
-				mTurn = PLAYER_PIECE;
+				
 			}
 
 			mGridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
@@ -171,6 +172,22 @@ namespace lecture
 		checkThreePiecesForMatch(2, 0, 2, 1, 2, 2, player);
 		checkThreePiecesForMatch(0, 0, 1, 1, 2, 2, player);
 		checkThreePiecesForMatch(0, 2, 1, 1, 2, 0, player);
+
+		if (mGameState != STATE_WON)
+		{
+			mGameState = STATE_AI_PLAYING;
+			mAI->PlacePiece(&mGridArray, mGridPieces, &mGameState);
+
+			checkThreePiecesForMatch(0, 0, 1, 0, 2, 0, AI_PIECE);
+			checkThreePiecesForMatch(0, 1, 1, 1, 2, 1, AI_PIECE);
+			checkThreePiecesForMatch(0, 2, 1, 2, 2, 2, AI_PIECE);
+			checkThreePiecesForMatch(0, 0, 0, 1, 0, 2, AI_PIECE);
+
+			checkThreePiecesForMatch(1, 0, 1, 1, 1, 2, AI_PIECE);
+			checkThreePiecesForMatch(2, 0, 2, 1, 2, 2, AI_PIECE);
+			checkThreePiecesForMatch(0, 0, 1, 1, 2, 2, AI_PIECE);
+			checkThreePiecesForMatch(0, 2, 1, 1, 2, 0, AI_PIECE);
+		}
 
 		int emptyNum = 9;
 
@@ -192,7 +209,7 @@ namespace lecture
 
 		if (mGameState == STATE_DRAW || mGameState == STATE_LOSE || mGameState == STATE_WON)
 		{
-			// show game over
+			mClock.restart();
 		}
 
 		std::cout << mGameState << std::endl;

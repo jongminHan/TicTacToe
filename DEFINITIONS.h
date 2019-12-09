@@ -44,3 +44,5 @@ const int STATE_LOSE = 95;
 const int STATE_PLACING_PIECE = 94;
 const int STATE_AI_PLAYING = 93;
 const int STATE_DRAW = 92;
+
+const int TIME_BEFORE_SHOWING_GAME_OVER = 3;

@@ -34,6 +34,7 @@ namespace lecture
 
 			while (accumulator >= dt)
 			{
+
 				mData->machine.GetActiveState()->HandleInput();
 				mData->machine.GetActiveState()->Update(dt);
 
